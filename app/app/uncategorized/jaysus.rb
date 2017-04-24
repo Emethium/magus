@@ -1,94 +1,46 @@
-require 'aws-sdk'
+require "aws-sdk"
+require 'openssl'
+require "hmac-sha2"
+require "cgi"
+require 'time'
+require 'net/https'
+require 'base64'
 
-NO_SUCH_BUCKET = "The bucket '%s' does not exist!"
+$AWS_ID='AKIAJOQLSMLJD54DEQ2A'
+$AWS_KEY='xG+nXx7hhOZcmTu3dyGjDfhA8cLY2Kpbnz+zrFqq'
+$SNS_ENDPOINT='sns.us-west-2.amazonaws.com'
 
-USAGE = <<DOC
-
-Usage: hello-s3 bucket_name [operation] [file_name]
-
-Where:
-  bucket_name (required) is the name of the bucket
-
-  operation   is the operation to perform on the bucket:
-              create  - creates a new bucket
-              upload  - uploads a file to the bucket
-              list    - (default) lists up to 50 bucket items
-
-  file_name   is the name of the file to upload,
-              required when operation is 'upload'
-
-DOC
-
-# Set the name of the bucket on which the operations are performed
-# This argument is required
-bucket_name = nil
-
-if ARGV.length > 0
-  bucket_name = ARGV[0]
-else
-  puts USAGE
-  exit 1
+def url_encode(string)
+  # don't encode: ~_-, spaces must me %20
+  CGI.escape(string.to_s).gsub("%7E", "~").gsub("+", "%20")
 end
 
-# The operation to perform on the bucket
-operation = 'list' # default
-operation = ARGV[1] if (ARGV.length > 1)
+def canonical_query_string(params)
+  #sort params by byte order
+  params.keys.sort.collect {|key|  [url_encode(key), url_encode(params[key])].join("=") }.join("&")
+end
 
-# The file name to use with 'upload'
-file = 'truth.txt'
-file = ARGV[2] if (ARGV.length > 2)
+def sign_request(params)
+  hmac = HMAC::SHA256.new($AWS_KEY)
+  hmac.update ['GET',$SNS_ENDPOINT,'/',canonical_query_string(params)].join("\n")
+  signature = Base64.encode64(hmac.digest).chomp
+end
 
-# Get an Amazon S3 resource
-s3 = Aws::S3::Resource.new(region: 'us-west-2')
+def publish(phone, msg)
+  # I nedd to provide a TOPIC OR A PHONENUMBER, not both!
+  params = {
+    #'PhoneNumber' => phone,
+    'Message' => msg,
+    'TopicArn' => 'arn:aws:sns:us-west-2:811937959946:tcc-test',
+    'Action' => 'Publish',
+    'SignatureMethod' => 'HmacSHA256',
+    'SignatureVersion' => 2,
+    'Timestamp' => Time.now.utc.iso8601,
+    'AWSAccessKeyId' => $AWS_ID
+  }
+  params['Signature']=sign_request(params)
+  query_string = canonical_query_string(params)
 
-# Get the bucket by name
-bucket = s3.bucket(bucket_name)
-
-case operation
-when 'create'
-  # Create a bucket if it doesn't already exist
-  if bucket.exists?
-    puts "The bucket '%s' already exists!" % bucket_name
-  else
-    bucket.create
-    puts "Created new S3 bucket: %s" % bucket_name
-  end
-
-when 'upload'
-  if file == nil
-    puts "You must enter the name of the file to upload to S3!"
-    exit
-  end
-
-  if bucket.exists?
-    name = File.basename file
-
-    # Check if file is already in bucket
-    if bucket.object(name).exists?
-      puts "#{name} already exists in the bucket"
-    else
-      obj = s3.bucket(bucket_name).object(name)
-      obj.upload_file(file)
-      puts "Uploaded '%s' to S3!" % name
-    end
-  else
-    NO_SUCH_BUCKET % bucket_name
-  end
-
-when 'list'
-  if bucket.exists?
-    # Enumerate the bucket contents and object etags
-    puts "Contents of '%s':" % bucket_name
-    puts '  Name => GUID'
-
-    bucket.objects.limit(50).each do |obj|
-      puts "  #{obj.key} => #{obj.etag}"
-    end
-  else
-    NO_SUCH_BUCKET % bucket_name
-  end
-
-else
-  puts "Unknown operation: '%s'!" % operation
-  puts USAGE
+  response=Net::HTTP.get_response(URI.parse("http://#{$SNS_ENDPOINT}/?#{query_string}"))
+  raise "SNS Publish failed #{response.code}\n#{response.body}" unless response.code=="200"
 end
