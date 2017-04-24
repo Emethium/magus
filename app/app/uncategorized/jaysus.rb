@@ -44,3 +44,9 @@ def publish(phone, msg)
   response=Net::HTTP.get_response(URI.parse("http://#{$SNS_ENDPOINT}/?#{query_string}"))
   raise "SNS Publish failed #{response.code}\n#{response.body}" unless response.code=="200"
 end
+
+def phone_publish(phone, msg)
+
+  sns = Aws::SNS::Client.new(region: 'us-west-2', access_key_id: $AWS_ID, secret_access_key: $AWS_KEY)
+  sns.publish({phone_number: phone, message: msg})
+end
