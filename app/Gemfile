@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Other stuff?
+gem 'bootstrap-sass', '3.3.6'
+
 # AWS needed libraries
 gem 'aws-sdk-rails'
 
