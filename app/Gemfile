@@ -37,6 +37,7 @@ gem 'bootstrap-sass', '3.3.6'
 
 # AWS needed libraries
 gem 'aws-sdk-rails'
+gem 'aws-sdk'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
