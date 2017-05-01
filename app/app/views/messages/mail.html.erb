@@ -5,10 +5,10 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@message) do |m| %>
       <%= m.label :number %>
-      <%= m.text_field :number, class: 'form-control' %>
+      <%= m.text_field :number%>
 
       <%= m.label :msg %>
-      <%= m.email_field :msg, class: 'form-control' %>
+      <%= m.text_field :msg%>
 
       <%= m.submit "Send my SMS!", class: "btn btn-primary" %>
     <% end %>
