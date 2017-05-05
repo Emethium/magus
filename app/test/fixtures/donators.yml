@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sex: MyString
+  address: MyString
+  bloodType: MyString
+  rhFactor: MyString
+  age: 1
+  lastDonation: 2017-05-05
+
+two:
+  name: MyString
+  sex: MyString
+  address: MyString
+  bloodType: MyString
+  rhFactor: MyString
+  age: 1
+  lastDonation: 2017-05-05

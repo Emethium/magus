@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'donators/new'
+
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -8,4 +10,5 @@ Rails.application.routes.draw do
   get  '/send',    to: 'messages#mail'
 
   resources :messages
+  resources :donators
 end
