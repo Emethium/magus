@@ -1,16 +1,16 @@
-<% provide(:title, 'Send SMS') %>
-<h1>Send your SMS here</h1>
+<% provide(:title, 'Enviar SMS') %>
+<h1>Envie o seu SMS aqui!</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@message) do |m| %>
-      <%= m.label :number %>
+      <%= m.label :número %>
       <%= m.text_field :number%>
 
-      <%= m.label :msg %>
-      <%= m.text_field :msg%>
+      <%= m.label :mensagem %>
+      <%= m.text_field :msg, :rows => 2 %>
 
-      <%= m.submit "Send my SMS!", class: "btn btn-primary" %>
+      <%= m.submit "Enviar mensagem!", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
