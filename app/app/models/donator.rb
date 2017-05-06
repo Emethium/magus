@@ -1,6 +1,5 @@
 class Donator < ApplicationRecord
-  attr_accessor :name, :sex, :address, :phone, :bloodType
-  attr_accessor :rhFactor, :age, :lastDonation
+
   validates :name, presence: true
   validates :sex, presence: true
   validates :address, presence: true

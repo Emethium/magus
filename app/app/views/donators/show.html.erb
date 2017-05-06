@@ -3,11 +3,22 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= @donator.name %>, <%= @donator.age %>
-        <%= @donator.sex %>
-        <%= @donator.address %>
-        <%= @donator.phone %>
-        <%= @donator.bloodType %>, <%= @donator.rhFactor %>
+        <b>Nome:</b> <%= @donator.name %>
+      </h1>
+      <h1>
+        <b>Idade:</b> <%= @donator.age %> anos
+      </h1>
+      <h1>
+        <b>Sexo:</b> <%= @donator.sex %>
+      </h1>
+      <h1>
+        <b>Endereço:</b> <%= @donator.address %>
+      </h1>
+      <h1>
+        <b>Telefone:</b> <%= @donator.phone %>
+      </h1>
+      <h1>
+        <b>Tipo sanguíneo:</b> <%= @donator.bloodType %><%= @donator.rhFactor %>
       </h1>
     </section>
   </aside>
