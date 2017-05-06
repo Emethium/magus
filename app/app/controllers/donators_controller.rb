@@ -10,6 +10,7 @@ class DonatorsController < ApplicationController
       redirect_to @donator
     else
       flash[:success] = "Ehr, alguma coisa deu errado!"
+      puts @donator.errors.full_messages
       render 'new'
     end
   end
