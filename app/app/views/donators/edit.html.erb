@@ -1,0 +1,26 @@
+<% provide(:title, "Editar cadastro") %>
+<h1>Editar cadastro do Doador</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@donator) do |d| %>
+
+      <%= d.label :nome %>
+      <%= d.text_field :name, class: 'form-control' %>
+
+      <%= d.label :idade %>
+      <%= d.number_field :age, class: 'form-control'%>
+
+      <%= d.label :endereço %>
+      <%= d.text_field :address, class: 'form-control'%>
+
+      <%= d.label :telefone %>
+      <%= d.text_field :phone, class: 'form-control' %>
+
+      <%= d.label :data_da_última_doação %>
+      <%= d.date_field :lastDonation %>
+
+      <%= d.submit "Salvar alterações!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
