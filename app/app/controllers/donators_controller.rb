@@ -4,7 +4,7 @@ class DonatorsController < ApplicationController
   end
 
   def create
-    @donator = Donator.new(donator_params)
+    @donator = Donator.new(full_donator_params)
     if @donator.save
       flash[:success] = "O doador foi cadastrado com sucesso!"
       redirect_to @donator
@@ -19,11 +19,20 @@ class DonatorsController < ApplicationController
     @donator = Donator.find(params[:id])
   end
 
+  def index_apt
+    @donator = Donator.where("lastDonation <= ?", (Time.now - 3.months))
+  end
+
   def index
     @donators = Donator.all
   end
 
   def edit
+    @donator = Donator.find(params[:id])
+  end
+
+
+  def update
     @donator = Donator.find(params[:id])
     if @donator.update_attributes(full_donator_params)
       flash[:success] = "Cadastro atualizado com sucesso!"
@@ -41,7 +50,7 @@ class DonatorsController < ApplicationController
     end
 
     def full_donator_params
-      params.permit(:name, :sex, :address, :phone, :bloodType,
+      params.require(:donator).permit(:name, :sex, :address, :phone, :bloodType,
                                       :rhFactor, :age, :lastDonation)
     end
 

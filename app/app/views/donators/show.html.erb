@@ -20,6 +20,11 @@
       <h1>
         <b>Tipo sanguíneo:</b> <%= @donator.bloodType %><%= @donator.rhFactor %>
       </h1>
+      <h1>
+        <b>Data da última doação:</b> <%= @donator.lastDonation.strftime("%d/%m/%Y") %>
+      </h1>
+      <br>
+      <%= button_to "Editar", edit_donator_path(@donator), :method => :get %>
     </section>
   </aside>
 </div>

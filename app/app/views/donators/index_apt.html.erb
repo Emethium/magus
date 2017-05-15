@@ -1,0 +1,10 @@
+<% provide(:title, 'Doadores aptos') %>
+<h1>Todos os doadores</h1>
+
+<ul class="donators">
+  <% @donators.each do |donator| %>
+    <li>
+      <%= link_to donator.name, donator %>
+    </li>
+  <% end %>
+</ul>

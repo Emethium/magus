@@ -60,6 +60,9 @@
         </div>
       </div>
 
+      <%= d.label :data_da_última_doação %>
+      <%= d.date_field :lastDonation %>
+
       <%= d.submit "Cadastrar novo doador!", class: "btn btn-primary" %>
     <% end %>
   </div>
