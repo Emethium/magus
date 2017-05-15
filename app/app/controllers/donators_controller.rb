@@ -20,7 +20,7 @@ class DonatorsController < ApplicationController
   end
 
   def index_apt
-    @donator = Donator.where("lastDonation <= ?", (Time.now - 3.months))
+    @donators = Donator.where("lastDonation <= ?", 3.months.ago)
   end
 
   def index
