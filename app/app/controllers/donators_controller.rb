@@ -23,6 +23,22 @@ class DonatorsController < ApplicationController
     @donators = Donator.where("lastDonation <= ?", 3.months.ago)
   end
 
+  def index_bloodo
+    @donators = Donator.where("bloodType = ?", "O")
+  end
+
+  def index_blooda
+    @donators = Donator.where("bloodType = ?", "A")
+  end
+
+  def index_bloodb
+    @donators = Donator.where("bloodType = ?", "B")
+  end
+
+  def index_bloodab
+    @donators = Donator.where("bloodType = ?", "AB")
+  end
+
   def index
     @donators = Donator.all
   end
@@ -31,6 +47,9 @@ class DonatorsController < ApplicationController
     @donator = Donator.find(params[:id])
   end
 
+  def mail_apt
+    @donators = Donator.where("lastDonation <= ?", 3.months.ago)
+  end
 
   def update
     @donator = Donator.find(params[:id])

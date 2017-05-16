@@ -1,0 +1,18 @@
+<% provide(:title, 'Envio de SMS em lote') %>
+<h1>Envio de SMS para doadores aptos</h1>
+
+<br><br>
+<h2><b>Destinatários da mensagem:</b></h2>
+<ul class="donators">
+  <% @donators.each do |donator| %>
+    <li>
+      <%= donator.name %>, <%= donator.phone %>
+    </li>
+  <% end %>
+</ul>
+
+<br><br>
+<h2><b>Mensagem a ser enviada:</b></h2>
+<%= text_area_tag "abc", "O Hemocentro de São Mateus gostaria de convidar o Senhor(a) a comparecer novamente em nosso centro e fazer uma nova doação. Nos ajude a salvar vidas!" %>
+<br>
+<%= button_to "Enviar SMS!", '/sendapt',:method => :get %>
