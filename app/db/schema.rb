@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505133606) do
+ActiveRecord::Schema.define(version: 20170607175250) do
 
   create_table "donators", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20170505133606) do
   create_table "messages", force: :cascade do |t|
     t.string   "number"
     t.string   "msg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sms_models", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

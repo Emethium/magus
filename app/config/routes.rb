@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'donators/new'
   root 'static_pages#home'
+
   get  '/help',      to: 'static_pages#help'
   get  '/about',     to: 'static_pages#about'
   get  '/contact',   to: 'static_pages#contact'
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   get  '/send',      to: 'messages#mail'
   get  '/apt',       to: 'donators#index_apt'
   get  '/sendapt',   to: 'donators#mail_apt'
+  get  '/models',    to: 'sms_models#index'
+  get  '/newmodel',  to: 'sms_models#new'
   get  '/donatorsa', to: 'donators#index_blooda'
   get  '/donatorso', to: 'donators#index_bloodo'
   get  '/donatorsb', to: 'donators#index_bloodb'
@@ -16,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :messages
   resources :donators
+  resources :sms_models
 end
