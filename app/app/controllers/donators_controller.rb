@@ -24,7 +24,7 @@ class DonatorsController < ApplicationController
   end
 
   def index_bloodo
-    @donators = Donator.where("bloodType = ?", "O")
+    @donators = Donator.where("bloodType = ?", "0")
   end
 
   def index_blooda
