@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get  '/send',      to: 'messages#mail'
   get  '/apt',       to: 'donators#index_apt'
   get  '/sendapt',   to: 'donators#mail_apt'
+  get  '/search',    to: 'donators#search'
   get  '/models',    to: 'sms_models#index'
   get  '/newmodel',  to: 'sms_models#new'
   get  '/donatorsa', to: 'donators#index_blooda'

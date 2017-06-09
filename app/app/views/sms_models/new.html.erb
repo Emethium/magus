@@ -8,7 +8,7 @@
       <%= s.text_field :name %>
 
       <%= s.label :mensagem %>
-      <%= s.number_field :content %>
+      <%= s.text_area :content, :size => 750 %>
 
       <%= s.submit "Cadastrar novo modelo!", class: "btn btn-primary" %>
     <% end %>

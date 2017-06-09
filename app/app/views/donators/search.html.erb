@@ -1,0 +1,37 @@
+<% provide(:title, 'Consulta') %>
+<h1>Consulta de doadores</h1>
+
+<div id="forms">
+    <%= form_tag donators_path, :method=> "get" do %>
+
+      <%= label_tag :name, "Nome" %>
+      <%= text_field_tag :name %>
+
+      <!--
+      <%= label_tag :sex, "Sexo" %>
+      <%= select_tag :sex, options_for_select([['Masculino', 'Masculino'], ['Feminino', 'Feminino']]) %>
+
+      <%= label_tag :bloodType, "Tipo Sanguíneo" %>
+      <%= select_tag :bloodType, options_for_select([['A', 'A'], ['B', 'B'], ['AB', 'AB'], ['O', 'O']]) %>
+
+      <%= label_tag :rhFactor, "Fator rh" %>
+      <%= select_tag :rhFactor, options_for_select([['+', '+'], ['-', '-']]) %>
+      -->
+
+      <%= label_tag :sex, "Sexo" %>
+      <%= text_field_tag :sex%>
+
+      <%= label_tag :bloodType, "Tipo Sanguíneo" %>
+      <%= text_field_tag :bloodType%>
+
+      <%= label_tag :rhFactor, "Fator rh" %>
+      <%= text_field_tag :rhFactor%>
+
+      <%= label_tag :city, "Cidade" %>
+      <%= text_field_tag :city%>
+
+      <%= submit_tag "Search" %>
+      <%= link_to "Apagar campos de busca", request.path, class:"cancel-button" %>
+    <% end %>
+
+</div>

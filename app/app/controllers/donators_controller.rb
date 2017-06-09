@@ -41,6 +41,11 @@ class DonatorsController < ApplicationController
 
   def index
     @donators = Donator.all
+    @donators = @donators.names(params[:name]) if params[:name].present?
+    @donators = @donators.sexes(params[:sex]) if params[:sex].present?
+    @donators = @donators.bloodTypes(params[:bloodType]) if params[:bloodType].present?
+    @donators = @donators.rhFactors(params[:rhFactor]) if params[:rhFactor].present?
+    @donators = @donators.cities(params[:city]) if params[:city].present?
   end
 
   def edit
@@ -49,6 +54,15 @@ class DonatorsController < ApplicationController
 
   def mail_apt
     @donators = Donator.where("lastDonation <= ?", 3.months.ago)
+  end
+
+  def search
+    @donators = Donator.all
+    @donators = @donators.names(params[:name]) if params[:name].present?
+    @donators = @donators.sexes(params[:sex]) if params[:sex].present?
+    @donators = @donators.bloodTypes(params[:bloodType]) if params[:bloodType].present?
+    @donators = @donators.rhFactors(params[:rhFactor]) if params[:rhFactor].present?
+    @donators = @donators.cities(params[:city]) if params[:city].present?
   end
 
   def update
@@ -70,7 +84,7 @@ class DonatorsController < ApplicationController
 
     def full_donator_params
       params.require(:donator).permit(:name, :sex, :address, :phone, :bloodType,
-                                      :rhFactor, :age, :lastDonation)
+                                      :rhFactor, :age, :lastDonation, :city)
     end
 
 end
