@@ -1,0 +1,15 @@
+<% provide(:title, @sms_model.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <b>Descrição:</b> <%= @sms_model.name %>
+      </h1>
+      <h1>
+        <b>Mensagem:</b> <br> <%= @sms_model.content %>
+      </h1>
+      <br>
+      <%= button_to "Editar", edit_sms_model_path(@sms_model), :method => :get %>
+    </section>
+  </aside>
+</div>

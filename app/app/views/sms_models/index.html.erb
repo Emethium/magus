@@ -1,0 +1,10 @@
+<% provide(:title, 'Modelos') %>
+<h1>Todos os modelos de mensagem</h1>
+
+<ul class="sms_models">
+  <% @sms_models.each do |sms_model| %>
+    <li>
+      <%= link_to sms_model.name, sms_model %>
+    </li>
+  <% end %>
+</ul>
