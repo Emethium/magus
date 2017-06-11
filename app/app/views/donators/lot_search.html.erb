@@ -1,8 +1,8 @@
-<% provide(:title, 'Consulta') %>
-<h1>Consulta de doadores</h1>
+<% provide(:title, 'Envio de mensagem em lote') %>
+<h1>Selecione as características dos Doadores a serem notificados</h1>
 
 <div id="forms">
-    <%= form_tag donators_path, :method=> "get" do %>
+    <%= form_tag sendonator_path, :method=> "get" do %>
 
       <%= label_tag :name, "Nome" %>
       <%= text_field_tag :name %>
@@ -16,17 +16,6 @@
 
       <%= label_tag :rhFactor, "Fator rh" %>
       <%= select_tag :rhFactor, options_for_select([['',''], ['+', '+'], ['-', '-']]) %>
-
-      <!--
-      <%= label_tag :sex, "Sexo" %>
-      <%= text_field_tag :sex%>
-
-      <%= label_tag :bloodType, "Tipo Sanguíneo" %>
-      <%= text_field_tag :bloodType%>
-
-      <%= label_tag :rhFactor, "Fator rh" %>
-      <%= text_field_tag :rhFactor%>
-      -->
 
       <%= label_tag :city, "Cidade" %>
       <%= text_field_tag :city%>

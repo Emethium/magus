@@ -39,6 +39,8 @@ class DonatorsController < ApplicationController
     @donators = Donator.where("bloodType = ?", "AB")
   end
 
+  #before_filter :index
+
   def index
     @donators = Donator.all
     @donators = @donators.names(params[:name]) if params[:name].present?
@@ -56,13 +58,21 @@ class DonatorsController < ApplicationController
     @donators = Donator.where("lastDonation <= ?", 3.months.ago)
   end
 
-  def search
+  def mail_donator
     @donators = Donator.all
     @donators = @donators.names(params[:name]) if params[:name].present?
     @donators = @donators.sexes(params[:sex]) if params[:sex].present?
     @donators = @donators.bloodTypes(params[:bloodType]) if params[:bloodType].present?
     @donators = @donators.rhFactors(params[:rhFactor]) if params[:rhFactor].present?
     @donators = @donators.cities(params[:city]) if params[:city].present?
+  end
+
+  def search
+
+  end
+
+  def lot_search
+
   end
 
   def update
