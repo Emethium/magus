@@ -27,20 +27,6 @@ class DonatorsController < ApplicationController
     @donators = Donator.where("bloodType = ?", "0")
   end
 
-  def index_blooda
-    @donators = Donator.where("bloodType = ?", "A")
-  end
-
-  def index_bloodb
-    @donators = Donator.where("bloodType = ?", "B")
-  end
-
-  def index_bloodab
-    @donators = Donator.where("bloodType = ?", "AB")
-  end
-
-  #before_filter :index
-
   def index
     @donators = Donator.all
     @donators = @donators.names(params[:name]) if params[:name].present?

@@ -16,9 +16,6 @@ Rails.application.routes.draw do
   get  '/models',     to: 'sms_models#index'
   get  '/newmodel',   to: 'sms_models#new'
   get  '/donatorsa',  to: 'donators#index_blooda'
-  get  '/donatorso',  to: 'donators#index_bloodo'
-  get  '/donatorsb',  to: 'donators#index_bloodb'
-  get  '/donatorsab', to: 'donators#index_bloodab'
 
   resources :messages
   resources :donators
