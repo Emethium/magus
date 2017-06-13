@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  donator: one
+  collectionDate: 2017-06-13
+  weight: 1
+  aptitude: MyString
+
+two:
+  donator: two
+  collectionDate: 2017-06-13
+  weight: 1
+  aptitude: MyString
