@@ -23,7 +23,7 @@ class Donator < ApplicationRecord
 
   def self.bloodTypes(bloodType)
     donator = all
-    donator = donator.where("bloodType LIKE ?", "%#{bloodType}%")
+    donator = donator.where("bloodType = ?", bloodType)
     return donator
   end
 

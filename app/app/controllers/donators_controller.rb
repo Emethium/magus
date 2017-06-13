@@ -32,6 +32,10 @@ class DonatorsController < ApplicationController
     @donators = @donators.names(params[:name]) if params[:name].present?
     @donators = @donators.sexes(params[:sex]) if params[:sex].present?
     @donators = @donators.bloodTypes(params[:bloodType]) if params[:bloodType].present?
+    if :bloodType == "AB"
+      @donators = @donators.bloodTypes(params["A"])
+      @donators = @donators.bloodTypes(params["B"])
+    end
     @donators = @donators.rhFactors(params[:rhFactor]) if params[:rhFactor].present?
     @donators = @donators.cities(params[:city]) if params[:city].present?
   end
