@@ -39,4 +39,14 @@ class Donator < ApplicationRecord
     return donator
   end
 
+  def self.apts(apt)
+    donator = all
+    if apt == "Sim"
+      donator = donator.where("lastDonation <= ?", 3.months.ago)
+    elsif apt == "Não"
+      donator = donator.where("lastDonation > ?", 3.months.ago)
+    end
+    return donator
+  end
+
 end

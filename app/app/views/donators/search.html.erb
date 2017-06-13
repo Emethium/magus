@@ -17,20 +17,13 @@
       <%= label_tag :rhFactor, "Fator rh" %>
       <%= select_tag :rhFactor, options_for_select([['',''], ['+', '+'], ['-', '-']]) %>
 
-      <!--
-      <%= label_tag :sex, "Sexo" %>
-      <%= text_field_tag :sex%>
-
-      <%= label_tag :bloodType, "Tipo Sanguíneo" %>
-      <%= text_field_tag :bloodType%>
-
-      <%= label_tag :rhFactor, "Fator rh" %>
-      <%= text_field_tag :rhFactor%>
-      -->
-
       <%= label_tag :city, "Cidade" %>
       <%= text_field_tag :city%>
 
+      <%= label_tag :apt, "Apto para doação" %>
+      <%= select_tag :apt, options_for_select([['',''], ['Sim', 'Sim'], ['Não', 'Não']]) %>
+
+      <br><br><br>
       <%= submit_tag "Search" %>
       <%= link_to "Apagar campos de busca", request.path, class:"cancel-button" %>
     <% end %>

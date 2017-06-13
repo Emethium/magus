@@ -13,6 +13,6 @@
 
 <br><br>
 <h2><b>Mensagem a ser enviada:</b></h2>
-<%= text_area_tag "abc", "O Hemocentro de São Mateus gostaria de convidar o Senhor(a) a comparecer novamente em nosso centro e fazer uma nova doação. Nos ajude a salvar vidas!" %>
-<br>
+<%= collection_select(:sms_model, :sms_model_id, SmsModel.all, :name, :content) %>
+<br><br><br><br>
 <%= button_to "Enviar SMS!", '/sendapt',:method => :get %>
