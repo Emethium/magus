@@ -1,0 +1,18 @@
+<% provide(:title, @donation.id) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <b>Doação número:</b> <%= @donation.id %>
+      </h1>
+      <h1>
+        <b>Doador:</b> <br> <%= @donator.name %>
+      </h1>
+      <h1>
+        <b>Data de Coleta:</b> <br> <%= @donation.collectionDate %>
+      </h1>
+      <br>
+      <%= button_to "Editar", edit_donation_path(@donation), :method => :get %>
+    </section>
+  </aside>
+</div>

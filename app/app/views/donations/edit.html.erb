@@ -1,0 +1,17 @@
+<% provide(:title, "Editar dados de doação") %>
+<h1>Editar doação</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@donation) do |d| %>
+
+      <%= d.label :doador %>
+      <%= d.collection_select :donator_id, Donator.all, :id, :name %>
+
+      <%= d.label :data_de_coleta %>
+      <%= d.date_field :collectionDate, class: 'form-control'%>
+
+      <%= d.submit "Salvar alterações!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

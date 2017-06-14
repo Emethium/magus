@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   get  '/lot',        to: 'donators#lot_search'
   get  '/models',     to: 'sms_models#index'
   get  '/newmodel',   to: 'sms_models#new'
-  get  '/donatorsa',  to: 'donators#index_blooda'
+  get  '/donations',  to: 'donations#index'
 
   resources :messages
   resources :donators
   resources :sms_models
+  resources :donations
 end

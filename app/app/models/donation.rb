@@ -1,3 +1,5 @@
 class Donation < ApplicationRecord
-  belongs_to :donator
+
+  validates :collectionDate, presence: true
+  validates :donator_id, presence: true
 end
