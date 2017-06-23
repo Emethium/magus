@@ -23,10 +23,6 @@ class DonatorsController < ApplicationController
     @donators = Donator.where("lastDonation <= ?", 3.months.ago)
   end
 
-  def index_bloodo
-    @donators = Donator.where("bloodType = ?", "0")
-  end
-
   def index
     @donators = Donator.all
     @donators = @donators.names(params[:name]) if params[:name].present?
@@ -53,7 +49,7 @@ class DonatorsController < ApplicationController
     @donators = @donators.rhFactors(params[:rhFactor]) if params[:rhFactor].present?
     @donators = @donators.cities(params[:city]) if params[:city].present?
     @donators = @donators.apts(params[:apt]) if params[:apt].present?
-    
+
     @sms_models = SmsModel.all
   end
 

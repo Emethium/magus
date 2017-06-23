@@ -1,6 +1,7 @@
 class SmsModelsController < ApplicationController
   def new
     @sms_model = SmsModel.new
+    @maximum_length = SmsModel.validators_on(:content).first.options[:maximum]
   end
 
   def create

@@ -4,27 +4,34 @@
 <div id="forms">
     <%= form_tag donators_path, :method=> "get" do %>
 
-      <%= label_tag :name, "Nome" %>
-      <%= text_field_tag :name %>
+      <label class="col-md-5 checkbox-list">
+        <%= label_tag :name, "Nome" %>
+        <%= text_field_tag :name %>
 
+        <%= label_tag :sex, "Sexo" %> <br>
+        <%= check_box_tag "sex[]", 'Masculino', false %> Masculino <br>
+        <%= check_box_tag "sex[]", 'Feminino', false %> Feminino <br> <br>
 
-      <%= label_tag :sex, "Sexo" %>
-      <%= select_tag :sex, options_for_select([['',''], ['Masculino', 'Masculino'], ['Feminino', 'Feminino']]) %>
+        <%= label_tag :bloodType, "Tipo Sanguíneo" %> <br>
+        <%= check_box_tag "bloodType[]", 'A', false %> A <br>
+        <%= check_box_tag "bloodType[]", 'B', false %> B <br>
+        <%= check_box_tag "bloodType[]", 'AB', false %> AB <br>
+        <%= check_box_tag "bloodType[]", 'O', false %> O <br><br>
 
-      <%= label_tag :bloodType, "Tipo Sanguíneo" %>
-      <%= select_tag :bloodType, options_for_select([['',''], ['A', 'A'], ['B', 'B'], ['AB', 'AB'], ['O', 'O']]) %>
+        <%= label_tag :rhFactor, "Fator rh" %> <br>
+        <%= check_box_tag "rhFactor[]", '+', false %> Positivo <br>
+        <%= check_box_tag "rhFactor[]", '-', false %> Negativo <br>
 
-      <%= label_tag :rhFactor, "Fator rh" %>
-      <%= select_tag :rhFactor, options_for_select([['',''], ['+', '+'], ['-', '-']]) %>
+        <br>
+        <%= label_tag :city, "Cidade" %>
+        <%= text_field_tag :city%>
 
-      <%= label_tag :city, "Cidade" %>
-      <%= text_field_tag :city%>
-
-      <%= label_tag :apt, "Apto para doação" %>
-      <%= select_tag :apt, options_for_select([['',''], ['Sim', 'Sim'], ['Não', 'Não']]) %>
+        <%= label_tag :apt, "Apto para doação" %>
+        <%= select_tag :apt, options_for_select([['',''], ['Sim', 'Sim'], ['Não', 'Não']]) %>
+      </label>
 
       <br><br><br>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Buscar" %>
       <%= link_to "Apagar campos de busca", request.path, class:"cancel-button" %>
     <% end %>
 

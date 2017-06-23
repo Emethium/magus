@@ -8,9 +8,23 @@
       <%= s.text_field :name %>
 
       <%= s.label :mensagem %>
-      <%= s.text_area :content, :size => 750 %>
+      <%= s.text_area :content, maxlength: @maximum_length, id: 'content_text', :size => 750 %>
+      Caracteres disponíveis: <span id="counter" data-maximum-length="<%= @maximum_length %>"><%= @maximum_length %></span>
 
       <%= s.submit "Cadastrar novo modelo!", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    var content_text = $("#content_text");
+    var counter     = $("#counter");
+    var max_length  = counter.data("maximum-length");
+
+    content_text.keyup(function() {
+        counter.text(160 - $(this).val().length);
+    });
+
+  });
+</script>

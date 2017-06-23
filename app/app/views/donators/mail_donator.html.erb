@@ -14,5 +14,9 @@
 <br><br>
 <h2><b>Mensagem a ser enviada:</b></h2>
 <%= collection_select(:sms_model, :sms_model_id, SmsModel.all, :name, :content) %>
+
+<br><br>
+<h2><b>Previsão de mensagem enviada:</b></h2>
+<%= text_field :useless, :value => :content %>
 <br><br><br><br>
 <%= button_to "Enviar SMS!", '/sendapt',:method => :get %>

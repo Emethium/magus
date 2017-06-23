@@ -17,19 +17,19 @@ class Donator < ApplicationRecord
 
   def self.sexes(sex)
     donator = all
-    donator = donator.where("sex LIKE ?", "%#{sex}%")
+    donator = donator.where("sex IN (?)", sex)
     return donator
   end
 
   def self.bloodTypes(bloodType)
     donator = all
-    donator = donator.where("bloodType = ?", bloodType)
+    donator = donator.where("bloodType IN (?)", bloodType)
     return donator
   end
 
   def self.rhFactors(rhFactor)
     donator = all
-    donator = donator.where("rhFactor LIKE ?", "%#{rhFactor}%")
+    donator = donator.where("rhFactor IN (?)", rhFactor)
     return donator
   end
 
