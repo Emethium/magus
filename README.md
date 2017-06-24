@@ -1,2 +1,2 @@
 # magus
-A Ruby application to send SMS through Web SMS Gateway services
+Application to manage Blood Centers resources and send SMS through Web SMS Gateway services to donators
